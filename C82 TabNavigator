@@ -1,4 +1,10 @@
+dependencies:{
+yarn add @react-navigation/material-bottom-tabs react-native-paper react-native-responsive-fontsize
+}
+
+
 import { RFValue } from "react-native-responsive-fontsize";
+
 
 
 return (
