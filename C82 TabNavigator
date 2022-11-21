@@ -1,8 +1,3 @@
-dependencies:{
-yarn add @react-navigation/material-bottom-tabs react-native-paper react-native-responsive-fontsize
-}
-
-
 import React from "react";
 import { StyleSheet } from "react-native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
