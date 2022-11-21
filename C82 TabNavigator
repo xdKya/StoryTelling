@@ -1,4 +1,7 @@
-   return (
+import { RFValue } from "react-native-responsive-fontsize";
+
+
+return (
     <Tab.Navigator
       labeled={false}
       barStyle={styles.bottomTabStyle}
