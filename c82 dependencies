@@ -1,0 +1,6 @@
+expo install expo-font
+expo install expo-app-loading
+
+yarn add @react-navigation/material-bottom-tabs react-native-paper react-native-responsive-fontsize
+
+
