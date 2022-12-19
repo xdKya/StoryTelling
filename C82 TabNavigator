@@ -7,6 +7,8 @@ import { RFValue } from "react-native-responsive-fontsize";
 const Tab = createMaterialBottomTabNavigator();
 
 
+const BottomTab = ()=>{
+
 return (
     <Tab.Navigator
       labeled={false}
