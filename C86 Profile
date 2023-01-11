@@ -7,19 +7,19 @@ import {
   Platform,
   StatusBar,
   Image,
-  Switch
+  Switch,
 } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import * as Font from "expo-font";
 
-import * as SplashScreen from 'expo-splash-screen';
+import * as SplashScreen from "expo-splash-screen";
 
 SplashScreen.preventAutoHideAsync();
 
 import firebase from "firebase";
 
 let customFonts = {
-  "Bubblegum-Sans": require("../assets/fonts/BubblegumSans-Regular.ttf")
+  "Bubblegum-Sans": require("../assets/fonts/BubblegumSans-Regular.ttf"),
 };
 
 export default class Profile extends Component {
@@ -27,6 +27,9 @@ export default class Profile extends Component {
     super(props);
     this.state = {
       fontsLoaded: false,
+      isEnabled: false,
+      light_theme: true,
+      name: "",
     };
   }
 
@@ -39,12 +42,54 @@ export default class Profile extends Component {
     this._loadFontsAsync();
   }
 
+  async fetchUser() {
+    let theme, name, image;
+    await firebase
+      .database()
+      .ref("/users/" + firebase.auth().currentUser.uid)
+      .on("value", function (data) {
+        theme = data.val().current_theme;
+        name = `${data.val().first_name} ${data.val().last_name} `;
+      });
+    this.setState({
+      light_theme: theme === "light" ? true : false,
+      isEnabled: theme === "light" ? false : true,
+      name: name,
+    });
+  }
+
   render() {
     if (this.state.fontsLoaded) {
       SplashScreen.hideAsync();
       return (
         <View style={styles.container}>
-          <Text>Profile</Text>
+          <SafeAreaView style={styles.droidSafeArea} />
+          <View style={styles.appTitle}>
+            <View style={styles.appIcon}>
+              <Image
+                style={styles.iconImage}
+                source={require("../assets/logo.png")}
+              />
+            </View>
+            <View style={styles.appTitleTextContainer}>
+              <Text style={styles.appTitleText}>Storytelling App</Text>
+            </View>
+          </View>
+          <View style={styles.screenContainer}>
+            <View style={styles.profileImageContainer}>
+              <Image
+                source={require("../assets/profile_img.png")}
+                style={styles.profileImage}
+              ></Image>
+              <Text style={styles.nameText}>{this.state.name}</Text>
+            </View>
+            <View style={styles.themeContainer}>
+              <Text style={styles.themeText}>Tema escuro</Text>
+              
+            </View>
+            <View style={{ flex: 0.3 }} />
+          </View>
+          <View style={{ flex: 0.08 }} />
         </View>
       );
     }
