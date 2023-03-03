@@ -1,0 +1,25 @@
+//constructor: isUpdated: false
+
+
+
+renderFeed = props => {
+    return <Feed setUpdateToFalse={this.removeUpdated} {...props} />;
+  };
+
+  renderStory = props => {
+    return <CreateStory setUpdateToTrue={this.changeUpdated} {...props} />;
+  };
+
+
+changeUpdated = () => {
+    this.setState({ isUpdated: true });
+  };
+
+  removeUpdated = () => {
+    this.setState({ isUpdated: false });
+  };
+
+
+/modifique o parametro component da sua tab.screen:
+//especifique que queremos desmontar o componente na prop options da tab.Screen.
+//faça o mesmo na drawer

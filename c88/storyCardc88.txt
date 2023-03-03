@@ -1,0 +1,22 @@
+//constructor:  
+     story_id: this.props.story.key,
+     story_data: this.props.story.value,
+
+
+
+//render:
+  let story = this.state.story_data;
+
+  let images = {
+        image_1: require("../assets/story_image_1.png"),
+        image_2: require("../assets/story_image_2.png"),
+        image_3: require("../assets/story_image_3.png"),
+        image_4: require("../assets/story_image_4.png"),
+        image_5: require("../assets/story_image_5.png")
+  };
+
+
+//altere a prop source da tag image
+
+//altere os parametros das tag text utilizando a nova var story
+
