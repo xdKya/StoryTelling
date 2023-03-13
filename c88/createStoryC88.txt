@@ -1,5 +1,5 @@
 //import button, alert
-
+import firebase from "firebase";
 
 
 //function
