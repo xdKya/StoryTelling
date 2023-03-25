@@ -21,10 +21,11 @@ export default class CustomSidebarMenu extends Component {
     firebase
       .database()
       .ref("/users/" + firebase.auth().currentUser.uid)
-      .on("value", function(snapshot) {
+      .on("value", (snapshot) =>{
         theme = snapshot.val().current_theme;
+         this.setState({ light_theme: theme === "light" });
       });
-    this.setState({ light_theme: theme === "light" ? true : false });
+   
   }
 
   render() {
