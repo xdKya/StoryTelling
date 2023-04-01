@@ -26,8 +26,8 @@ export default class CreateStory extends Component {
     super(props);
     this.state = {
       fontsLoaded: false,
-      previewImage: "image1",
       dropdownHeight: 40,
+      
     };
   }
 
@@ -98,12 +98,7 @@ export default class CreateStory extends Component {
                     color: this.state.dropdownHeight == 170 ? "black" : "white",
                     fontFamily: "Bubblegum-Sans",
                   }}
-                  onSelectItem={(item) =>
-                    this.setState({
-                      previewImage: item.value,
-                    })
-                  }
-                  placeholder={this.state.previewImage}
+       
                 />
               </View>
 
