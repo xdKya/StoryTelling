@@ -1,4 +1,93 @@
-<DropDownPicker
+import React, { Component } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  Platform,
+  StatusBar,
+  Image,
+  ScrollView,
+  TextInput,
+  Dimensions,
+  Button,
+  Alert,
+} from "react-native";
+import DropDownPicker from "react-native-dropdown-picker";
+import { RFValue } from "react-native-responsive-fontsize";
+import * as SplashScreen from "expo-splash-screen";
+SplashScreen.preventAutoHideAsync();
+import * as Font from "expo-font";
+import firebase from "firebase";
+
+let customFonts = {
+  "Bubblegum-Sans": require("../assets/fonts/BubblegumSans-Regular.ttf"),
+};
+
+export default class CreateStory extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fontsLoaded: false,
+      previewImage: "image_1",
+      dropdownHeight: 40,
+      author: "",
+    };
+  }
+
+  async _loadFontsAsync() {
+    await Font.loadAsync(customFonts);
+    this.setState({ fontsLoaded: true });
+  }
+
+  componentDidMount() {
+    this._loadFontsAsync();
+  }
+
+  render() {
+    if (this.state.fontsLoaded) {
+      SplashScreen.hideAsync();
+
+      let preview_images = {
+        image_1: require("../assets/story_image_1.png"),
+        image_2: require("../assets/story_image_2.png"),
+        image_3: require("../assets/story_image_3.png"),
+        image_4: require("../assets/story_image_4.png"),
+        image_5: require("../assets/story_image_5.png"),
+      };
+      return (
+        <View
+          style={
+            styles.container
+          }
+        >
+          <SafeAreaView style={styles.droidSafeArea} />
+          <View style={styles.appTitle}>
+            <View style={styles.appIcon}>
+              <Image
+                source={require("../assets/logo.png")}
+                style={styles.iconImage}
+              ></Image>
+            </View>
+            <View style={styles.appTitleTextContainer}>
+              <Text
+                style={
+                  styles.appTitleText
+                }
+              >
+                Nova História
+              </Text>
+            </View>
+          </View>
+          <View style={styles.fieldsContainer}>
+            <ScrollView>
+              <Image
+                source={preview_images[this.state.previewImage]}
+                style={styles.previewImage}
+              ></Image>
+
+              <View style={{ height: RFValue(this.state.dropdownHeight) }}>
+                <DropDownPicker
                   items={[
                     { label: "Imagem 1", value: "image_1" },
                     { label: "Imagem 2", value: "image_2" },
@@ -21,17 +110,16 @@
                   }}
                   style={{ backgroundColor: "transparent" }}
                   itemStyle={{
-                    justifyContent: "center",
+                    justifyContent: "flex-start",
                   }}
                   dropDownStyle={{
-                   "#2f345d",
+                    backgroundColor: "#2f345d",
                   }}
                   labelStyle={
                      styles.dropdownLabel
                   }
                   arrowStyle={
-                    
-                       styles.dropdownLabel
+                     styles.dropdownLabel
                   }
                   onChangeItem={(item) =>
                     this.setState({
@@ -43,20 +131,17 @@
               <View style={{ marginHorizontal: RFValue(10) }}>
                 <TextInput
                   style={
-                    
-                      styles.inputFont
+                     styles.inputFont
                   }
                   onChangeText={(title) => this.setState({ title })}
                   placeholder={"Título"}
                   placeholderTextColor={
-                     "white"
+                    "white"
                   }
                 />
                 <TextInput
                   style={[
-                    this.state.light_theme
-                      ? styles.inputFontLight
-                      : styles.inputFont,
+                    styles.inputFont,
                     styles.inputFontExtra,
                     styles.inputTextBig,
                   ]}
@@ -65,14 +150,12 @@
                   multiline={true}
                   numberOfLines={4}
                   placeholderTextColor={
-                     "white"
+                    "white"
                   }
                 />
                 <TextInput
                   style={[
-                    this.state.light_theme
-                      ? styles.inputFontLight
-                      : styles.inputFont,
+                    styles.inputFont,
                     styles.inputFontExtra,
                     styles.inputTextBig,
                   ]}
@@ -81,14 +164,12 @@
                   multiline={true}
                   numberOfLines={20}
                   placeholderTextColor={
-                    "white"
+                  "white"
                   }
                 />
                 <TextInput
                   style={[
-                    this.state.light_theme
-                      ? styles.inputFontLight
-                      : styles.inputFont,
+                    styles.inputFont,
                     styles.inputFontExtra,
                     styles.inputTextBig,
                   ]}
@@ -97,25 +178,31 @@
                   multiline={true}
                   numberOfLines={4}
                   placeholderTextColor={
-                     "white"
+                  "white"
                   }
                 />
               </View>
               <View style={styles.submitButton}>
                 <Button
-                  title="Enviar"
+                  title="Submit"
                   color="#841584"
                 />
               </View>
-              
-              
-              
-              const styles = StyleSheet.create({
+            </ScrollView>
+          </View>
+          <View style={{ flex: 0.08 }} />
+        </View>
+      );
+    }
+  }
+}
+
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#15193c",
   },
- 
+
   droidSafeArea: {
     marginTop:
       Platform.OS === "android" ? StatusBar.currentHeight : RFValue(35),
@@ -144,7 +231,7 @@
     fontFamily: "Bubblegum-Sans",
     textAlign: "center",
   },
- 
+
   fieldsContainer: {
     flex: 0.85,
   },
@@ -165,12 +252,12 @@
     color: "white",
     fontFamily: "Bubblegum-Sans",
   },
-  
+
   dropdownLabel: {
     color: "white",
     fontFamily: "Bubblegum-Sans",
   },
-  
+
   inputFontExtra: {
     marginTop: RFValue(15),
   },
@@ -184,4 +271,3 @@
     justifyContent: "center",
   },
 });
-              
