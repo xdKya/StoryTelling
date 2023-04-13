@@ -1,0 +1,43 @@
+<TextInput
+                style={styles.inputFont}
+                onChangeText={(title) => this.setState({ title })}
+                placeholder={"Title"}
+                placeholderTextColor="white"
+              />
+
+              <TextInput
+                style={[
+                  styles.inputFont,
+                  styles.inputFontExtra,
+                  styles.inputTextBig,
+                ]}
+                onChangeText={(description) => this.setState({ description })}
+                placeholder={"Description"}
+                multiline={true}
+                numberOfLines={4}
+                placeholderTextColor="white"
+              />
+              <TextInput
+                style={[
+                  styles.inputFont,
+                  styles.inputFontExtra,
+                  styles.inputTextBig,
+                ]}
+                onChangeText={(story) => this.setState({ story })}
+                placeholder={"Story"}
+                multiline={true}
+                numberOfLines={20}
+                placeholderTextColor="white"
+              />
+              <TextInput
+                style={[
+                  styles.inputFont,
+                  styles.inputFontExtra,
+                  styles.inputTextBig,
+                ]}
+                onChangeText={(moral) => this.setState({ moral })}
+                placeholder={"Moral of the story"}
+                multiline={true}
+                numberOfLines={4}
+                placeholderTextColor="white"
+              />
