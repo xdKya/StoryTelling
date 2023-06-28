@@ -72,34 +72,7 @@ export default class CreateStory extends Component {
                 style={styles.previewImage}
               ></Image>
               <View style={{ height: RFValue(this.state.dropdownHeight) }}>
-                <DropDownPicker
-                  items={[
-                    { label: "Image1", value: "image1" },
-                    { label: "Image2", value: "image2" },
-                    { label: "Image3", value: "image3" },
-                    { label: "Image4", value: "image4" },
-                    { label: "Image5", value: "image5" },
-                  ]}
-                  defaultValue={this.state.previewImage}
-                  open={this.state.dropdownHeight == 170 ? true : false}
-                  onOpen={() => {
-                    this.setState({ dropdownHeight: 170 });
-                  }}
-                  onClose={() => {
-                    this.setState({ dropdownHeight: 40 });
-                  }}
-                  style={{
-                    backgroundColor: "transparent",
-                    borderWidth: 1,
-                    borderColor: "white",
-                    color: "white",
-                  }}
-                  textStyle={{
-                    color: this.state.dropdownHeight == 170 ? "black" : "white",
-                    fontFamily: "Bubblegum-Sans",
-                  }}
-       
-                />
+                
               </View>
 
               <TextInput
