@@ -9,20 +9,14 @@ import {
   Image
 } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
-import StoryCard from "./StoryCard";
-
-
 import * as Font from "expo-font";
 import { FlatList } from "react-native-gesture-handler";
 import * as SplashScreen from 'expo-splash-screen';
-
 SplashScreen.preventAutoHideAsync();
 
 let customFonts = {
   "Bubblegum-Sans": require("../assets/fonts/BubblegumSans-Regular.ttf")
 };
-
-
 
 export default class Feed extends Component {
   constructor(props) {
@@ -41,8 +35,7 @@ export default class Feed extends Component {
     this._loadFontsAsync();
   }
 
-
-  keyExtractor = (item, index) => index.toString();
+  //keyExtractor = (item, index) => index.toString();
 
   render() {
     if (this.state.fontsLoaded) {
@@ -62,9 +55,7 @@ export default class Feed extends Component {
             </View>
           </View>
           <View style={styles.cardContainer}>
-            <FlatList
-              keyExtractor={this.keyExtractor}
-            />
+            //crie sua flatlist
           </View>
         </View>
       );
