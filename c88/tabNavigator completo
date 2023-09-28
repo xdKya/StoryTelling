@@ -59,7 +59,7 @@ export default class BottomTabNavigator extends Component {
             let iconName;
             if (route.name === "Feed") {
               iconName = focused ? "home" : "home-outline";
-            } else if (route.name === "CreateStory") {
+            } else if (route.name === "Create Story") {
               iconName = focused ? "add-circle" : "add-circle-outline";
             }
             return (
@@ -81,7 +81,7 @@ export default class BottomTabNavigator extends Component {
           options={{ unmountOnBlur: true }}
         />
         <Tab.Screen
-          name="CreateStory"
+          name="Create Story"
           component={this.renderStory}
           options={{ unmountOnBlur: true }}
         />
